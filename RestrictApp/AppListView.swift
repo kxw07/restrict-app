@@ -27,10 +27,18 @@ struct AppListView: View {
         NavigationView {
             VStack(spacing: 20) {
                 if appStore.isAuthorized {
-                    FamilyActivityPicker(selection: $selection)
-                        .onChange(of: selection) { newSelection in
-                            appStore.updateSelection(newSelection)
-                        }
+                    VStack {
+                        Text("Select apps to restrict")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .padding(.top)
+
+                        FamilyActivityPicker(selection: $selection)
+                            .onChange(of: selection) { newSelection in
+                                appStore.updateSelection(newSelection)
+                                print("Selection changed: \(newSelection.applicationTokens.count) apps, \(newSelection.categoryTokens.count) categories")
+                            }
+                    }
 
                     if appStore.selectionCount > 0 {
                         VStack(alignment: .leading, spacing: 10) {
@@ -155,23 +163,39 @@ class AppStore: ObservableObject {
     }
 
     func checkAuthorization() {
-        switch center.authorizationStatus {
+        let status = center.authorizationStatus
+        print("Authorization status: \(status)")
+
+        switch status {
         case .approved:
             isAuthorized = true
-        default:
+            print("Family Controls authorized")
+        case .denied:
             isAuthorized = false
+            print("Family Controls denied")
+        case .notDetermined:
+            isAuthorized = false
+            print("Family Controls not determined")
+        @unknown default:
+            isAuthorized = false
+            print("Family Controls unknown status")
         }
     }
 
     func requestAuthorization() {
+        print("Requesting Family Controls authorization...")
         Task {
             do {
                 try await center.requestAuthorization(for: .individual)
+                print("Authorization request completed")
                 await MainActor.run {
                     checkAuthorization()
                 }
             } catch {
                 print("Failed to authorize: \(error)")
+                await MainActor.run {
+                    isAuthorized = false
+                }
             }
         }
     }

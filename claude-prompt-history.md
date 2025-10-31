@@ -35,3 +35,6 @@ When user opens the restricted apps then open this app and show text "This app i
 ## 11
 Fix error when app installing:
 Bundle at path /Users/kaiwu/Library/Developer/CoreSimulator/Devices/267E2092-A6EB-4998-BAF7-56622A1D5395/data/Library/Caches/com.apple.mobile.installd.staging/temp.NQoA2x/extracted/Payload/RestrictApp.app/PlugIns/ShieldConfiguration.appex has missing or invalid CFBundleExecutable in its Info.plist
+
+## 12
+During "Select Apps", should show apps in their category, but cannot see any apps now.
