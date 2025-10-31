@@ -1,5 +1,6 @@
 import SwiftUI
 import FamilyControls
+import ManagedSettings
 
 struct AppListView: View {
     @StateObject private var appStore = AppStore()
@@ -14,9 +15,9 @@ struct AppListView: View {
                             appStore.updateSelection(newSelection)
                         }
 
-                    if !appStore.selectedApps.isEmpty {
+                    if appStore.selectionCount > 0 {
                         VStack(alignment: .leading, spacing: 10) {
-                            Text("Selected Apps: \(appStore.selectedApps.count)")
+                            Text("Selected Apps: \(appStore.selectionCount)")
                                 .font(.headline)
                                 .padding(.horizontal)
 
@@ -72,9 +73,11 @@ struct AppListView: View {
 
 class AppStore: ObservableObject {
     @Published var isAuthorized = false
-    @Published var selectedApps: [String] = []
+    @Published var selectionCount = 0
 
+    private var selectedApps = FamilyActivitySelection()
     private let center = AuthorizationCenter.shared
+    private let store = ManagedSettingsStore()
 
     init() {
         checkAuthorization()
@@ -103,13 +106,29 @@ class AppStore: ObservableObject {
     }
 
     func updateSelection(_ selection: FamilyActivitySelection) {
-        selectedApps = Array(selection.applicationTokens.map { $0.description })
+        selectedApps = selection
+        selectionCount = selection.applicationTokens.count + selection.categoryTokens.count + selection.webDomainTokens.count
     }
 
     func applyRestrictions() {
-        // This is where you would apply the actual restrictions
-        // using ManagedSettings or DeviceActivity
-        print("Applying restrictions to \(selectedApps.count) apps")
+        Task { @MainActor in
+            do {
+                print("Applying restrictions to \(selectionCount) items")
+
+                // Apply shields to selected apps and categories
+                store.shield.applications = selectedApps.applicationTokens
+
+                if !selectedApps.categoryTokens.isEmpty {
+                    store.shield.applicationCategories = .specific(selectedApps.categoryTokens)
+                }
+
+                if !selectedApps.webDomainTokens.isEmpty {
+                    store.shield.webDomains = selectedApps.webDomainTokens
+                }
+
+                print("Restrictions applied successfully")
+            }
+        }
     }
 }
 

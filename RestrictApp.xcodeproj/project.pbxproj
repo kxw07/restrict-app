@@ -15,11 +15,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AAAAAA0000000009 /* RestrictApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestrictApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAAAA0000000002 /* RestrictAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictAppApp.swift; sourceTree = "<group>"; };
 		AAAAAA0000000004 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AAAAAA0000000006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAAAAA0000000008 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AAAAAA0000000009 /* RestrictApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestrictApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAAAA0000000010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAAAAA0000000027 /* AppListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListView.swift; sourceTree = "<group>"; };
 		AAAAAA0000000028 /* RestrictApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RestrictApp.entitlements; sourceTree = "<group>"; };
@@ -44,14 +44,6 @@
 			);
 			sourceTree = "<group>";
 		};
-		AAAAAA0000000014 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AAAAAA0000000009 /* RestrictApp.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		AAAAAA0000000013 /* RestrictApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +56,14 @@
 				AAAAAA0000000015 /* Preview Content */,
 			);
 			path = RestrictApp;
+			sourceTree = "<group>";
+		};
+		AAAAAA0000000014 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAAAAA0000000009 /* RestrictApp.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		AAAAAA0000000015 /* Preview Content */ = {
@@ -102,7 +102,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					AAAAAA0000000016 = {
 						CreatedOnToolsVersion = 15.0;
@@ -335,20 +335,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AAAAAA0000000021 /* Build configuration list for PBXProject "RestrictApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AAAAAA0000000022 /* Debug */,
-				AAAAAA0000000023 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		AAAAAA0000000017 /* Build configuration list for PBXNativeTarget "RestrictApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAAAAA0000000024 /* Debug */,
 				AAAAAA0000000025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAAAAA0000000021 /* Build configuration list for PBXProject "RestrictApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAAAAA0000000022 /* Debug */,
+				AAAAAA0000000023 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
