@@ -28,3 +28,6 @@ Add a button named "Show Restrictions" below the button "Restrict", which functi
 
 ## 9
 Add a button which can cancel opertaion during "Restrict".
+
+## 10
+When user opens the restricted apps then open this app and show text "This app is restricted by yourfelf."
