@@ -19,3 +19,6 @@ Fix errors:
 ## 6
 Fix error when run
 "0x103204a04 <+20>: strb   w8, [x0], Thread 1: EXC_BAD_ACCESS (code=2, address=0x19702cd94)"
+
+## 7
+Save data on phone when user press button "Apply Restrictions".
