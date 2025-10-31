@@ -91,6 +91,3 @@ iOSInjectionProject/
 
 # Mac
 .DS_Store
-
-# Claude Code
-claude-prompt-history.md

@@ -31,6 +31,8 @@
     <true/>
     <key>UILaunchScreen</key>
     <dict/>
+    <key>NSFamilyControlsUsageDescription</key>
+    <string>This app needs access to Screen Time data to help you manage and restrict app usage.</string>
     <key>UISupportedInterfaceOrientations</key>
     <array>
         <string>UIInterfaceOrientationPortrait</string>

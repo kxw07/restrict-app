@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingAppList = false
+
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -29,7 +31,7 @@ struct ContentView: View {
                 Spacer()
 
                 Button(action: {
-                    // Restrict button action
+                    showingAppList = true
                 }) {
                     Text("Restrict")
                         .font(.headline)
@@ -42,6 +44,9 @@ struct ContentView: View {
                 .padding(.horizontal)
             }
             .padding()
+        }
+        .sheet(isPresented: $showingAppList) {
+            AppListView()
         }
     }
 }
