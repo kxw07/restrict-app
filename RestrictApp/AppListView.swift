@@ -20,6 +20,8 @@ struct SavedRestrictions: Codable {
 struct AppListView: View {
     @StateObject private var appStore = AppStore()
     @State private var selection = FamilyActivitySelection()
+    @State private var showingSuccessAlert = false
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         NavigationView {
@@ -38,6 +40,7 @@ struct AppListView: View {
 
                             Button(action: {
                                 appStore.applyRestrictions()
+                                showingSuccessAlert = true
                             }) {
                                 Text("Apply Restrictions")
                                     .font(.headline)
@@ -110,6 +113,20 @@ struct AppListView: View {
             }
             .navigationTitle("Select Apps")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
+            }
+            .alert("Restrictions Applied", isPresented: $showingSuccessAlert) {
+                Button("OK") {
+                    dismiss()
+                }
+            } message: {
+                Text("Your app restrictions have been applied successfully.")
+            }
         }
     }
 
