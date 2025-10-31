@@ -27,8 +27,20 @@ struct ContentView: View {
                 .padding()
 
                 Spacer()
+
+                Button(action: {
+                    // Restrict button action
+                }) {
+                    Text("Restrict")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(12)
+                }
+                .padding(.horizontal)
             }
-            .navigationTitle("Welcome")
             .padding()
         }
     }
