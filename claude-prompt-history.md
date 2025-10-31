@@ -22,3 +22,6 @@ Fix error when run
 
 ## 7
 Save data on phone when user press button "Apply Restrictions".
+
+## 8
+Add a button named "Show Restrictions" below the button "Restrict", which function is show restricted apps.

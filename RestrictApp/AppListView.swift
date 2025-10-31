@@ -224,6 +224,26 @@ class AppStore: ObservableObject {
             print("Failed to load restrictions: \(error)")
         }
     }
+
+    func removeAllRestrictions() {
+        Task { @MainActor in
+            // Clear all shields
+            store.shield.applications = nil
+            store.shield.applicationCategories = nil
+            store.shield.webDomains = nil
+
+            // Clear saved data
+            UserDefaults.standard.removeObject(forKey: restrictionsKey)
+
+            // Update published properties
+            lastSavedDate = nil
+            savedItemCount = 0
+            selectedApps = FamilyActivitySelection()
+            selectionCount = 0
+
+            print("All restrictions removed")
+        }
+    }
 }
 
 #Preview {

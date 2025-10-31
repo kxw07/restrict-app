@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showingAppList = false
+    @State private var showingRestrictions = false
 
     var body: some View {
         NavigationView {
@@ -42,11 +43,27 @@ struct ContentView: View {
                         .cornerRadius(12)
                 }
                 .padding(.horizontal)
+
+                Button(action: {
+                    showingRestrictions = true
+                }) {
+                    Text("Show Restrictions")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(12)
+                }
+                .padding(.horizontal)
             }
             .padding()
         }
         .sheet(isPresented: $showingAppList) {
             AppListView()
+        }
+        .sheet(isPresented: $showingRestrictions) {
+            RestrictionsDetailView()
         }
     }
 }
