@@ -1,5 +1,8 @@
 # Restrict App
 
+## Status
+Pending for Screen Time API needs to pay.
+
 ## Usage
 Restrict moblie phone apps occupy your time.
 Make your life better.
